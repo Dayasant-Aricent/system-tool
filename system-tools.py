@@ -15,7 +15,7 @@ redis_db = redis.StrictRedis(host=str(os.environ['REDIS_SERVICE_HOST']), port=st
 class SystemToolTime(Resource):
     def get(self):
         ## SYSTEM_TIME is the name of the subscribed microservice that is been onboarded.
-        ## The subscribed microservice should always be in caps while fetching from redis db.
+        ## The subscribed microservice should always be provided in caps while fetching from redis db.
         ms_json = eval(redis_db.get('SYSTEM-TIME'))
         ## 10002 is the post on which the subscibed microservice "system-time" is running.
         url = str(ms_json["10002"])
@@ -30,7 +30,7 @@ class SystemToolTime(Resource):
 class SystemToolUpTime(Resource):
     def get(self):
         ## SYSTEM_UPTIME is the name of the subscribed microservice that is been onboarded.
-        ## The subscribed microservice should always be in caps while fetching from redis db.
+        ## The subscribed microservice should always be provided in caps while fetching from redis db.
         ms_json = eval(redis_db.get('SYSTEM-UPTIME'))
         ## 10004 is the post on which the subscibed microservice "system-uptime" is running.
         url = str(ms_json["10004"])
