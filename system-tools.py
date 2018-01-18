@@ -13,8 +13,11 @@ api = Api(app)
 redis_db = redis.StrictRedis(host=str(os.environ['REDIS_SERVICE_HOST']), port=str(os.environ['REDIS_SERVICE_PORT']))
 
 class SystemToolTime(Resource):
-    def get(self):      
-        ms_json = eval(redis_db.get('SYSTEM-TIME-1514'))
+    def get(self):
+        ## SYSTEM_TIME is the name of the subscribed microservice that is been onboarded.
+        ## The subscribed microservice should always be in caps while fetching from redis db.
+        ms_json = eval(redis_db.get('SYSTEM-TIME'))
+        ## 10002 is the post on which the subscibed microservice "system-time" is running.
         url = str(ms_json["10002"])
         headers = {            
             'API-KEY': redis_db.get('API-KEY')
@@ -26,7 +29,10 @@ class SystemToolTime(Resource):
 
 class SystemToolUpTime(Resource):
     def get(self):
-        ms_json = eval(redis_db.get('SYSTEM-UPTIME-1512'))
+        ## SYSTEM_UPTIME is the name of the subscribed microservice that is been onboarded.
+        ## The subscribed microservice should always be in caps while fetching from redis db.
+        ms_json = eval(redis_db.get('SYSTEM-UPTIME'))
+        ## 10004 is the post on which the subscibed microservice "system-uptime" is running.
         url = str(ms_json["10004"])
         headers = {            
             'API-KEY': redis_db.get('API-KEY')
