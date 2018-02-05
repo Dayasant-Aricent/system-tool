@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER Anuyog Chauhan "anuyog.chauhan@aricent.com"
+MAINTAINER Anuj Gupta "anuj6.gupta@aricent.com"
 RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
 COPY . /app
