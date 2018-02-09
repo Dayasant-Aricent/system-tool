@@ -1,3 +1,0 @@
-               port:
-  tcp:10002:,#sdfv                listening: true
-    ip:                    - 0.0.0.0
