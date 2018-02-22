@@ -40,10 +40,26 @@ class SystemToolUpTime(Resource):
         resp = requests.request("GET", url, headers=headers)
         #resp = requests.get(url)
         return resp.json()
+    
+    
+class SystemToolTimeNew(Resource):
+    def get(self):
+        ## SYSTEM_TIME is the name of the subscribed microservice that is been onboarded.
+        ## The subscribed microservice should always be provided in caps while fetching from redis db.
+        ms_json = eval(redis_db.get('TEST-NEW-MS-FEB'))
+        ## 10002 is the port on which the subscibed microservice "system-time" is running.
+        url = str(ms_json["10002"])
+        headers = {            
+            'API-KEY': redis_db.get('API-KEY')
+            }
+        resp = requests.request("GET", url, headers=headers)
+        #resp = requests.get(url)
+        return resp.json()
 
 
 api.add_resource(SystemToolTime, '/systemtoolstime')
 api.add_resource(SystemToolUpTime, '/systemtoolsuptime')
+api.add_resource(SystemToolTimeNew, '/systemtoolstimenew')
 
 
 if __name__ == '__main__':
