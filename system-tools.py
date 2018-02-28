@@ -16,7 +16,7 @@ class SystemToolTime(Resource):
     def get(self):
         ## SYSTEM_TIME is the name of the subscribed microservice that is been onboarded.
         ## The subscribed microservice should always be provided in caps while fetching from redis db.
-        ms_json = eval(redis_db.get('SYSTEM-TIME-1515'))
+        ms_json = eval(redis_db.get('SYSTEM-TIME-DSK2802'))
         ## 10002 is the port on which the subscibed microservice "system-time" is running.
         url = str(ms_json["10002"])
         headers = {            
@@ -31,7 +31,7 @@ class SystemToolUpTime(Resource):
     def get(self):
         ## SYSTEM_UPTIME is the name of the subscribed microservice that is been onboarded.
         ## The subscribed microservice should always be provided in caps while fetching from redis db.
-        ms_json = eval(redis_db.get('SYSTEM-UPTIME-1514'))
+        ms_json = eval(redis_db.get('SYSTEM-UPTIME-DSK2802'))
         ## 10004 is the port on which the subscibed microservice "system-uptime" is running.
         url = str(ms_json["10004"])
         headers = {            
