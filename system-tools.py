@@ -31,7 +31,7 @@ class SystemToolUpTime(Resource):
     def get(self):
         ## SYSTEM_UPTIME is the name of the subscribed microservice that is been onboarded.
         ## The subscribed microservice should always be provided in caps while fetching from redis db.
-        ms_json = eval(redis_db.get('DSKMULTIM2802B-UPTIME'))
+        ms_json = eval(redis_db.get('DSKM2802B-UPTIME'))
         ## 10004 is the port on which the subscibed microservice "system-uptime" is running.
         url = str(ms_json["10004"])
         headers = {            
